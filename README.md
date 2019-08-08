@@ -4,7 +4,7 @@ A MiniPrograms of wechat about looking for pets.一个可以帮你寻找丢失�
 
 ## 首页
 
-![2](https://github.com/Fendy5/mcj/example/2.jpeg)
+![2](https://github.com/Fendy5/mcj/blob/master/example/2.jpeg)
 
 
 
@@ -14,4 +14,4 @@ A MiniPrograms of wechat about looking for pets.一个可以帮你寻找丢失�
 
 
 
-![1](https://github.com/Fendy5/mcj/example/1.jpeg)
+![1](https://github.com/Fendy5/mcj/blob/master/example/1.jpeg)
