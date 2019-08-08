@@ -1,0 +1,88 @@
+<!--index.wxml-->
+<view wx:if="{{status < 1}}">
+  <view class='remind-box' style='padding-top:150px;'>
+    <image class="remind-img" src="/image/loading.gif"></image>
+  </view>
+</view>
+<view wx:else>
+  <view class="container">
+    <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="*this">
+        <navigator url='../person/about/about'>
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" width="355" height="150" />
+          </swiper-item>
+        </navigator>
+      </block>
+    </swiper>
+    <view class='border'></view>
+    <view class='nav'>
+      <view bindtap='getShowData' class='nav_box'>
+        <image class='nav_item' src='/image/recent.png'></image>
+        <text style='color:black;padding-top:15rpx'>最近</text>
+      </view>
+
+
+      <view bindtap='filter' id='狗狗' class='nav_box'>
+        <image class='nav_item' src='/image/dog5.png'></image>
+        <text style='color:black;padding-top:15rpx'>汪星人</text>
+      </view>
+
+      <view bindtap='filter' id='猫咪' class='nav_box'>
+        <image class='nav_item' src='/image/cat.png'></image>
+        <text style='color:black;padding-top:15rpx'>猫星人</text>
+      </view>
+
+      <view bindtap='filter' id='其它' class='nav_box'>
+        <image class='nav_item' src='/image/others.png'></image>
+        <text style='color:black;padding-top:15rpx'>其它</text>
+      </view>
+    </view>
+    <view class='border'></view>
+    <view wx:if="{{list.length < 1}}">
+      <view class='nodata' style='margin-top:50rpx'>
+        <image class='nodata-img' src='/image/sorry.png'></image>
+        <view>没有更多了啦！</view>
+      </view>
+    </view>
+    <view wx:for="{{list}}" wx:key="*this">
+      <view class='card'>
+        <view class='card_header'>
+          <view class='card_header_left'>
+            <image class='card_header_avatar' src='https://mcj.qiujikeji.com/public/uploads/avatarUrl/{{item.avatarUrl}}.jpg'> </image>
+            <view class='card_header_left_item'>
+              <text style=' font-size: 24rpx;'>{{item.nickname}}</text>
+              <text style=' font-size: 22rpx;color:#515151'>{{item.create_time}}</text>
+            </view>
+          </view>
+          <view class='card_header_status'>{{item.send_sort}}</view>
+        </view>
+        <navigator url="../detail/detail?id={{item.id}}">
+          <view class='card_content'>
+            <view class='card_content_right'>
+              <image style='width:150rpx;height:150rpx' src='{{item.image}}'></image>
+            </view>
+            <view class='card_content_right'>
+              <view>
+                <image style='width:28rpx;height:28rpx' src='../../image/name.png'></image>宠物类型：{{item.pet_sort}}</view>
+              <view>
+                <image style='width:28rpx;height:28rpx' src='../../image/place.png'></image>丢失地点：{{item.region}}</view>
+              <view>
+                <image style='width:28rpx;height:28rpx' src='../../image/time.png'></image>丢失时间：{{item.send_date}}</view>
+            </view>
+            <!-- <image class='card_content_img' src='http://www.qqtouxiang.com/d/file/tupian/mx/20170713/jijdgn0rekpce.jpg'>
+                      </image> -->
+          </view>
+        </navigator>
+        <view class='card_footer'>
+          <view class='fee'>
+            <view class='fee_text'>悬赏：</view>
+            <view class='fee_num'>{{item.fee}}</view>
+            <image src='/image/bone.png'></image>
+          </view>
+        </view>
+        <view class='border'></view>
+      </view>
+    </view>
+  </view>
+</view>

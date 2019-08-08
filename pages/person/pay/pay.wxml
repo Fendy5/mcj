@@ -1,0 +1,35 @@
+      <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+        <view class="weui-cells__title"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">收款人</view>
+                </view>
+                <view class="weui-cell__bd">
+               <input class="weui-input"  disabled='true'   value="{{name}}" />
+                </view>
+                </view>
+                  <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">金额（元）</view>
+                </view>
+                <view class="weui-cell__bd">
+               <input class="weui-input" type='number' name="fee"  value='{{fee}}'  placeholder="请输入打赏金额"/>
+                </view>
+                </view>
+           </view>
+
+        <view class="weui-cells__title">留言</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                     <textarea  bindinput='texearea' name="comment" placeholder="请输入打赏留言"  class="weui-textarea"  value='{{comment}}' style="height: 3.3em" />
+                    <view class="weui-textarea-counter">{{texe_num}}/200</view>
+                </view>
+            </view>
+        </view>
+
+
+          <button class="weui-btn" type="primary" plain='true' formType="submit">打赏</button>
+
+   </form>

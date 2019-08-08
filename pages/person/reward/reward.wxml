@@ -1,0 +1,103 @@
+<view class="container">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/image/loading.gif"></image>
+  </view>
+  <block wx:else>
+    <view class="page">
+      <view class="page__bd">
+        <view class="weui-tab">
+          <view class="weui-navbar">
+            <block wx:for="{{tabs}}" wx:key="*this">
+              <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                <view class="weui-navbar__title">{{item}}</view>
+              </view>
+            </block>
+            <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+          </view>
+          <view class="weui-tab__panel">
+            <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+
+
+              <view wx:if="{{rewarded.length < 1}}">
+                <view class='nodata'>
+                  <image class='nodata-img' src='/image/sorry.png'></image>
+                  <view>很抱歉，没有找到你想要的内容</view>
+                </view>
+              </view>
+              <view class='border_reword'></view>
+              <view wx:for="{{rewarded}}">
+
+                <view class='containter_out'>
+                  <view class='containter'>
+                    <navigator url="../../detail/detail?id={{item.odid}}">
+                      <view class='header'>
+                        <view class='header_left'>
+                          <image style='width:30px;height:30px; border-radius: 50%;' src='{{item.avatarUrl}}'></image>
+                          <text style='padding:5px 0 0 5px'> {{item.nickname}} </text>
+                        </view>
+                        <view class='header_right'> {{item.create_time}} </view>
+                      </view>
+                      <view class='content'>
+                        <view class='content_up'>打赏金额</view>
+                        <view class='content_down'>￥{{item.fee}}</view>
+                      </view>
+                      <view class='footer'>
+                        <view class='footer_left'>查看详情</view>
+                        <view class='footer_right'>
+                          <image style='width:20px;height:20px' src='../../../image/tz.png'></image>
+                        </view>
+                      </view>
+                    </navigator>
+                  </view>
+                </view>
+                <view class='border_reword'></view>
+
+              </view>
+            </view>
+            <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+
+              <view wx:if="{{myreward.length < 1}}">
+                <view class='nodata'>
+                  <image class='nodata-img' src='/image/sorry.png'></image>
+                  <view>很抱歉，没有找到你想要的内容</view>
+                </view>
+              </view>
+              <view class='border_reword'></view>
+              <view wx:for="{{myreward}}">
+                <view class='containter_out'>
+                  <view class='containter'>
+                    <navigator url="../../detail/detail?id={{item.odid}}">
+                      <view class='header'>
+                        <view class='header_left'>
+                          <image style='width:30px;height:30px; border-radius: 50%;' src='{{item.avatarUrl}}'></image>
+                          <text style='padding:5px 0 0 5px'> {{item.nickname}} </text>
+                        </view>
+                        <view class='header_right'> {{item.create_time}} </view>
+                      </view>
+                      <view class='content'>
+                        <view class='content_up'>打赏金额 </view>
+                        <view class='content_down'>￥{{item.fee}}</view>
+                      </view>
+
+                      <view class='footer'>
+                        <view class='footer_left'>查看详情</view>
+                        <view class='footer_right'>
+                          <image style='width:20px;height:20px' src='../../../image/tz.png'></image>
+                        </view>
+                      </view>
+                    </navigator>
+                  </view>
+                </view>
+                <view class='border_reword'></view>
+              </view>
+
+
+
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+</view>

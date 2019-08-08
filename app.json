@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/send/send",
+    "pages/share/share",
+    "pages/person/person",
+    "pages/person/reward/reward",
+    "pages/person/balance/balance",
+    "pages/detail/detail",
+    "pages/person/mymcj/mymcj",
+    "pages/person/feedback/feedback",
+    "pages/adopt/adopt",
+    "pages/person/pay/pay",
+    "pages/person/question/question",
+    "pages/person/myadopt/myadopt",
+    "pages/adopt/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/dog1.png",
+        "selectedIconPath": "image/dog.png",
+        "text": "寻宠"
+      },
+      {
+        "pagePath": "pages/adopt/adopt",
+        "iconPath": "image/cat1.png",
+        "selectedIconPath": "image/cat.png",
+        "text": "领养"
+      },
+      {
+        "pagePath": "pages/send/send",
+        "iconPath": "image/cw1.png",
+        "selectedIconPath": "image/cw.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "iconPath": "image/person1.png",
+        "selectedIconPath": "image/person.png",
+        "text": "个人"
+      }
+    ]
+  }
+}

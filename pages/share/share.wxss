@@ -1,0 +1,18 @@
+.warp {
+  background-position:top center;
+background-attachment:fixed;
+ background-size:100%;
+ -moz-background-size:100% 100%;
+ height: 100%;
+}
+.warp image {
+    width: 100%;
+    height: 100%;
+}
+.authorize-btn{
+  background-color: #C26F19;
+  width:350rpx;
+  height:90rpx;
+ top:770rpx;
+margin-bottom:15px;
+}

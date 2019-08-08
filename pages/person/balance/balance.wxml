@@ -1,0 +1,25 @@
+<view class="containter" >
+<view class='balance'>
+<view class='balance_header'>
+<view class='balance_header_left'>帐号余额</view>
+<view class='balance_header_right'>{{fee}} <text style='font-size: 14px;color:black;line-height: 59px;'>元</text></view>
+</view>
+<form bindsubmit="formSubmit"  >
+<view class='balance_content'>
+<view class='balance_content_up'>提现金额</view>
+<view class='balance_content_middle'><view style='font-size:48px'>￥</view> 
+<input   class='balance_content_middle_input' maxlength='5' focus='true' type='number'name='fees' value='{{fees}}'>  </input>
+</view>
+<view bindtap='allwd' class='balance_content_down'>全部提现</view>
+</view>
+<view class='balance_footer'>
+<button class="weui-btn" formType="submit"  type="primary" >提现到微信</button>
+<view class='balance_footer_down'>1-3个工作日到账</view>
+</view>
+</form>
+</view>
+</view>
+
+<button class="kf_button" open-type="contact" session-from="weapp">
+    <image class="kf_image" src="../../../image/kefu.png"></image>
+</button>

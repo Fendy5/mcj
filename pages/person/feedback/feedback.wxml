@@ -1,0 +1,27 @@
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view class="weui-cells__title">反馈清单</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">标题</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="tittle" value='{{tittle}}' placeholder="请输入标题" />
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">内容</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea bindinput='texearea' name="content" value='{{content}}' class="weui-textarea" placeholder="请输入你宝贵的意见" style="height: 3.3em" />
+        <view class="weui-textarea-counter">{{texe_num}}/200</view>
+      </view>
+    </view>
+  </view>
+
+
+  <button class="weui-btn" type="primary" plain='true' formType="submit">提交</button>
+
+</form>

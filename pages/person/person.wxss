@@ -1,0 +1,95 @@
+
+.container{
+
+}
+.head{
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 400rpx;
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+  box-shadow: 0 8px 10px 0 rgba(255, 130, 171, 0.3), 0 20px 20px 0 rgba(0, 0, 0, 0.3);
+}
+.userinfo{
+  /* position: absolute;
+  left: 50%;
+  margin-left: -75rpx;
+  top:50%;
+  margin-top: -75rpx; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 5%;
+}
+.userinfo-nickname {
+  text-align: center;
+  color: black;
+}
+.userinfo_avatar {
+  width: 128rpx;
+  height: 128rpx;
+  clip-path: circle(50% at center);
+  margin-left: 42%;
+  margin-bottom: 10rpx;
+}
+.person{
+  position: relative;
+  top: -150rpx;
+}
+.person_header{
+width:95%;
+height:250rpx;
+background-color:#fff;
+position:relative;
+border-radius:30rpx;
+margin-left:-45%;
+left:47.5%;
+}
+.weui-cells_after-title{
+  margin-top:0;
+width:95%;
+position:relative;
+margin-left:-45%;
+left:47.5%;
+border-radius:30rpx;
+background-color: #fff;
+}
+.bone{
+margin-left: 40%;
+padding-top:15rpx;
+}
+.bone image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 10rpx;
+}
+.bone_top{
+  display: flex;
+}
+.bone_top_text{
+  font-size: 32rpx;
+}
+.bone_text{
+  margin-left:10rpx;
+font-size:50rpx;
+color:#f40;
+
+}
+.my_record{
+display: flex
+}
+.my_record_text{
+font-size:32rpx;
+
+}
+.my_record_num{
+font-size:45rpx;
+color:grey;
+line-height:50rpx;
+margin:0 15rpx;
+
+}
+.my{
+  display: flex;
+  justify-content: space-around
+}

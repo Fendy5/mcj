@@ -1,0 +1,70 @@
+<view class='adopt'>
+  <view class='header'>
+    <image src="/image/ly.jpg"></image>
+  </view>
+  <view class='adopt_nav'>
+
+    <view bindtap='getShowData' class='nav_box'>
+      <image class='nav_item' src='/image/recent.png'></image>
+      <text style='color:black;padding-top:15rpx'>最近</text>
+    </view>
+
+
+    <view bindtap='filter' id='狗狗' class='nav_box'>
+      <image class='nav_item' src='/image/dog5.png'></image>
+      <text style='color:black;padding-top:15rpx'>汪星人</text>
+    </view>
+
+    <view bindtap='filter' id='猫咪' class='nav_box'>
+      <image class='nav_item' src='/image/cat.png'></image>
+      <text style='color:black;padding-top:15rpx'>猫星人</text>
+    </view>
+
+    <view bindtap='filter' id='其它' class='nav_box'>
+      <image class='nav_item' src='/image/others.png'></image>
+      <text style='color:black;padding-top:15rpx'>其它</text>
+    </view>
+  </view>
+<view  class='adopt_content'>
+
+ 
+
+<view wx:for="{{list}}"  wx:key="*this" class='adopt_content_item'>
+<navigator url='detail/detail?id={{item.id}}'>
+
+<view class='adopt_content_item_info'> 
+            <!-- <view class='adopt_userinfo'>
+                  <image src='https://mcj.qiujikeji.com/public/uploads/avatarUrl/{{item.avatarUrl}}.jpg' style='width:64rpx;height:64rpx;padding:0;' class='adopt_userinfo_avatarUrl'></image>
+                  <view class='adopt_userinfo_nickname'>{{item.nickname}}</view>
+            </view>
+           <view class='adopt_otherinfo'>
+            <view class='adopt_time'>{{item.create_time}}</view>
+            <view class='adopt_city'>{{item.region}}</view>
+           </view> -->
+       </view> 
+
+     <image src='{{item.image}}'></image>
+
+  <view class='adopt_content_item_text'>
+          <view class='adopt_content_item_price'>
+          <view class='adopt_content_item_price_text'>{{item.fee}}</view>
+          <image src='/image/bone.png' style='width:50rpx;height:50rpx;'></image>
+          </view>
+          <view class='adopt_content_item_name'>{{item.pet_sort}}</view>
+      </view>
+
+</navigator>
+ 
+
+      
+
+    
+ 
+
+</view>
+
+ 
+</view>
+  
+
+</view>

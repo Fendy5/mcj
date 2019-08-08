@@ -1,0 +1,38 @@
+<view class="main" wx:if="{{result.total}}">
+  <!--主体部分标题-->
+  <view class="main-title">
+    <text class="title-text">相关问题（{{result.total}}个）</text>
+  </view>
+  <!--主体部分内容列表-->
+  <view class="main-list" wx:for="{{result.list}}" wx:key="question">
+    <!--列表的一个元素的模板结构-->
+    <view class="list-item">
+      <!--信息直接显示部分-->
+      <view class="item" data-index="{{index}}" bindtap="bindOpenList">
+        <view class="item-content">
+          <image class="item-content-image" src="/image/question1.png"></image>
+          <view class="item-content-state">
+            <view class="content-state-name">
+              <text class="state-name-active">{{item.activeName}}</text>{{item.normalXm}}
+            </view>
+            <view class="content-state-stuId">
+              <text class="state-name-active">{{item.question}}</text>
+            </view>
+          </view>
+        </view>
+        <!--信息直接显示部分的下拉标识-->
+        <view class="list-sign">
+          <image class="list-sign-icon {{!item.display ? 'list-sign-icon-show' : ''}}" src="/image/common/up.png"></image>
+        </view>
+      </view>
+      <!--信息隐藏的下拉列表-->
+      <view class="item-ul" hidden="{{!item.display}}">
+        <view class="item-ul-gendor item-ul-li">
+
+          <text class="ul-li-content">{{item.answer}}</text>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>

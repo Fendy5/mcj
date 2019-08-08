@@ -1,0 +1,483 @@
+<block wx:if="{{status < 1}}">
+  <view class='remind-box' style='padding-top:150px;'>
+    <image class="remind-img" src="/image/loading.gif"></image>
+  </view>
+</block>
+<view wx:elif="{{status < 2}}" class="warp" style="background-image: url('https://mcj.qiujikeji.com/public/static/img/guide.jpg')">
+  <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" style='background-color:#C26F19' class="authorize-btn" type="primary">Let us go</button>
+</view>
+<block wx:elif="{{status < 3}}">
+  <view class="weui-cells__title">物品详情清单</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">发布类型</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindSendSortChange" name="sendSort" value="{{sendsort[sendsortIndex]}}" range="{{sendsort}}">
+          <view class="weui-input">
+            <view wx:if="{{!sendsort[sendsortIndex]}}">
+              ---请选择发布类型--
+            </view>
+            {{sendsort[sendsortIndex]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:elif="{{status < 4}}">
+  <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+    <view class="weui-cells__title">物品详情清单</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">发布类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindSendSortChange" name="sendSort" value="{{sendsort[sendsortIndex]}}" range="{{sendsort}}">
+            <view class="weui-input">
+              <view wx:if="{{!sendsort[sendsortIndex]}}">
+                ---请选择发布类型--
+              </view>
+              {{sendsort[sendsortIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="page__bd">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">图片上传</view>
+                <view class="weui-uploader__info">{{files.length}}/8</view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{files}}" wx:for-item="item" wx:key="*this">
+                    <view class="weui-uploader__file" bindtap="previewImage" bindlongpress="deleteImage" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item}}" data-index="{{index}}" mode="aspectFill" />
+                    </view>
+                  </block>
+                </view>
+                <view class="weui-uploader__input-box" style='{{uploader}}'>
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='border'></view>
+    <view class="weui-cells__title">宠物信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">宠物类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPickerChange" placeholder="宠物的类型" name="petSort" value="{{sort[index]}}" range="{{sort}}">
+            <view class="weui-input">
+              <view wx:if="{{!sort[index]}}">
+                ------宠物类型------
+              </view>
+              {{sort[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">丢失日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" name="date" value="{{date}}" start="{{date_start}}" end="{{date}}" bindchange="bindDateChange">
+            <view class="weui-input">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">丢失省市</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region" name="region" bindchange="bindRegionChange" value="{{formData.region}}">
+            <view class="weui-input">
+              {{formData.region[0]}}{{formData.region[1]}}{{formData.region[2]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea bindinput='texearea' name="detail" value='{{textarea}}' class="weui-textarea" placeholder="请输入宠物的形状特征，尽可能写详细一点。" style="height: 3.3em" />
+          <view class="weui-textarea-counter">{{texe_num}}/200</view>
+        </view>
+      </view>
+
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">电话号码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="phone" type='number' maxlength='11' value='' placeholder="必填" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">悬赏金额</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="fee" type='number' value='' placeholder="选填（骨头）" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">更多选项</view>
+        <view class="weui-cell__ft">
+          <switch bindchange="more_cw" />
+        </view>
+      </view>
+
+     <view class="weui-cells weui-cells_after-title" wx:if="{{more==1}}">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">宠物名称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="petname" value='' placeholder="宠物的名称（选填）" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">丢失时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time" value="{{time}}" bindchange="bindTimeChange">
+              <view class="weui-input">{{time}}</view>
+            </picker>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">具体地点</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="place" value='{{recommend}}' placeholder="请输入宠物丢失的详细地点" />
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <button class="weui-btn" style='background-color:#C26F19;' type="primary" formType="submit">发布</button>
+    <button class="weui-btn" type="default" formType="reset">重新填写</button>
+    <view style='height:70rpx' class='border'></view>
+    <text>\n</text>
+  </form>
+
+</block>
+
+<block wx:elif="{{status < 5}}">
+  <form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+    <view class="weui-cells__title">物品详情清单</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">发布类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindSendSortChange" name="sendSort" value="{{sendsort[sendsortIndex]}}" range="{{sendsort}}">
+            <view class="weui-input">
+              <view wx:if="{{!sendsort[sendsortIndex]}}">
+                ---请选择发布类型--
+              </view>
+              {{sendsort[sendsortIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="page__bd">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">图片上传</view>
+                <view class="weui-uploader__info">{{files.length}}/8</view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{files}}" wx:for-item="item" wx:key="*this">
+                    <view class="weui-uploader__file" bindtap="previewImage" bindlongpress="deleteImage" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item}}" data-index="{{index}}" mode="aspectFill" />
+                    </view>
+                  </block>
+                </view>
+                <view class="weui-uploader__input-box" style='{{uploader}}'>
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='border'></view>
+    <view class="weui-cells__title">宠物信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">宠物类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPickerChange" placeholder="宠物的类型" name="petSort" value="{{sort[index]}}" range="{{sort}}">
+            <view class="weui-input">
+              <view wx:if="{{!sort[index]}}">
+                ------宠物类型------
+              </view>
+              {{sort[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">发现日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" name="date" value="{{date}}" start="{{date_start}}" end="{{date}}" bindchange="bindDateChange">
+            <view class="weui-input">{{date}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">发现省市</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region" name="region" bindchange="bindRegionChange" value="{{formData.region}}">
+            <view class="weui-input">
+              {{formData.region[0]}}{{formData.region[1]}}{{formData.region[2]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea bindinput='texearea' name="detail" value='{{textarea}}' class="weui-textarea" placeholder="请输入宠物的形状特征，尽可能写详细一点。" style="height: 3.3em" />
+          <view class="weui-textarea-counter">{{texe_num}}/200</view>
+        </view>
+      </view>
+
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">电话号码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="phone" type='number' maxlength='11' value='' placeholder="必填" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">更多选项</view>
+        <view class="weui-cell__ft">
+          <switch bindchange="more_cw" />
+        </view>
+      </view>
+
+     <view class="weui-cells weui-cells_after-title" wx:if="{{more==1}}">
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">发现时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time" value="{{time}}" bindchange="bindTimeChange">
+              <view class="weui-input">{{time}}</view>
+            </picker>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">具体地点</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="place" value='{{recommend}}' placeholder="请输入宠物丢失的详细地点" />
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <button class="weui-btn" style='background-color:#C26F19;' type="primary" formType="submit">发布</button>
+    <button class="weui-btn" type="default" formType="reset">重新填写</button>
+    <view style='height:70rpx' class='border'></view>
+    <text>\n</text>
+  </form>
+
+  <view class="weui-footer">
+    <view class="weui-footer__text">Copyright © 2018 觅宠记 All Rights Reserved</view>
+  </view>
+</block>
+
+<block wx:elif="{{status < 6}}">
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+    <view class="weui-cells__title">物品详情清单</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">发布类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindSendSortChange" name="sendSort" value="{{sendsort[sendsortIndex]}}" range="{{sendsort}}">
+            <view class="weui-input">
+              <view wx:if="{{!sendsort[sendsortIndex]}}">
+                ---请选择发布类型--
+              </view>
+              {{sendsort[sendsortIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="page__bd">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">图片上传</view>
+                <view class="weui-uploader__info">{{files.length}}/8</view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{files}}" wx:for-item="item" wx:key="*this">
+                    <view class="weui-uploader__file" bindtap="previewImage" bindlongpress="deleteImage" id="{{item}}">
+                      <image class="weui-uploader__img" src="{{item}}" data-index="{{index}}" mode="aspectFill" />
+                    </view>
+                  </block>
+                </view>
+                <view class="weui-uploader__input-box" style='{{uploader}}'>
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='border'></view>
+    <view class="weui-cells__title">宠物信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">宠物类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPickerChange" placeholder="宠物的类型" name="petSort" value="{{sort[index]}}" range="{{sort}}">
+            <view class="weui-input">
+              <view wx:if="{{!sort[index]}}">
+                ------宠物类型------
+              </view>
+              {{sort[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">所在省市</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="region" name="region" bindchange="bindRegionChange" value="{{formData.region}}">
+            <view class="weui-input">
+              {{formData.region[0]}}{{formData.region[1]}}{{formData.region[2]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea bindinput='texearea' name="detail" value='{{textarea}}' class="weui-textarea" placeholder="请输入宠物的形状特征，尽可能写详细一点。" style="height: 3.3em" />
+          <view class="weui-textarea-counter">{{texe_num}}/200</view>
+        </view>
+      </view>
+
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">电话号码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="phone" type='number' maxlength='11' value='' placeholder="必填" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">出售金额</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="fee" type='number' value='' placeholder="选填（骨头）" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">更多选项</view>
+        <view class="weui-cell__ft">
+          <switch bindchange="more_cw" />
+        </view>
+      </view>
+
+      <view class="weui-cells weui-cells_after-title" wx:if="{{more==1}}">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">宠物名称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="petname" value='' placeholder="宠物的名称（选填）" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">具体地点</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="place" value='{{recommend}}' placeholder="请输入宠物丢失的详细地点" />
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <button class="weui-btn" style='background-color:#C26F19;' type="primary" formType="submit">发布</button>
+    <button class="weui-btn" type="default" formType="reset">重新填写</button>
+    <view style='height:70rpx' class='border'></view>
+    <text>\n</text>
+  </form>
+
+</block>

@@ -1,0 +1,142 @@
+<view class="container">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/image/loading.gif"></image>
+  </view>
+  <block wx:else>
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view wx:if="{{myadopt_cw.length < 1}}">
+            <view class='nodata'>
+              <image class='nodata-img' src='/image/sorry.png'></image>
+              <view>很抱歉，没有找到你想要的内容</view>
+            </view>
+          </view>
+
+          <view wx:for="{{myadopt_cw}}" wx:key="*this">
+            <view class='border'></view>
+            <view class='card'>
+              <view class='card_header'>
+                <view class='card_header_left'>
+                  <image class='card_header_avatar' src='https://mcj.qiujikeji.com/public/uploads/avatarUrl/{{item.avatarUrl}}.jpg'> </image>
+                  <view class='card_header_left_item'>
+                    <text style=' font-size: 24rpx;'>{{item.nickname}}</text>
+                    <text style=' font-size: 22rpx;color:#515151'>{{item.create_time}}</text>
+                  </view>
+                </view>
+                <view wx:if="{{item.status=='寻觅中'}}">
+                  <view class='card_header_status'>{{item.status}}</view>
+                </view>
+                <view wx:else>
+                  <view style='color:black' class='card_header_status'>{{item.status}}</view>
+                </view>
+
+              </view>
+              <navigator url="/pages/adopt/detail/detail?id={{item.id}}">
+                <view class='card_content'>
+                  <view class='card_content_right'>
+                    <image style='width:150rpx;height:150rpx' src='{{item.image}}'></image>
+                  </view>
+                  <view class='card_content_right'>
+                  <view>
+                      <image style='width:28rpx;height:28rpx' src='/image/time.png'></image>宠物名字：{{item.name}}</view>
+                    <view>
+                      <image style='width:28rpx;height:28rpx' src='/image/name.png'></image>宠物类型：{{item.pet_sort}}</view>
+                    <view>
+                      <image style='width:28rpx;height:28rpx' src='/image/place.png'></image>丢失地点：{{item.region}}</view>
+                  </view>
+                  <!-- <image class='card_content_img' src='http://www.qqtouxiang.com/d/file/tupian/mx/20170713/jijdgn0rekpce.jpg'>
+                                                </image> -->
+                </view>
+              </navigator>
+              <view style='display:flex;justify-content:space-between;' class='card_footer'>
+                <view class='fee'>
+                  <view class='fee_text'>费用：</view>
+                  <view class='fee_num'>{{item.fee}}</view>
+                  <image src='/image/bone.png'></image>
+                </view>
+                <view style='display:flex' wx:if="{{item.status=='待领取'}}">
+                  <button bindtap='cancel' plain="true" data-sort="myadop_cw" id='{{item.id}}'  style='color:#fbc2eb;border:1px solid #fbc2eb;margin-right:15rpx;line-height:60rpx;width:200rpx;height:60rpx;margin-top:10rpx;border-radius:15px;font-size:30rpx;' type="primary">取消交易</button> 
+                   <button bindtap='confirm' plain="true" data-sort="myadopt_cw" id='{{item.id}}' style='color:black;border:1px solid black;margin-right:50rpx;line-height:60rpx;width:200rpx;height:60rpx;margin-top:10rpx;border-radius:15px;font-size:30rpx;' type="primary">交易确认</button>
+                </view>
+
+                <view wx:else>
+                  <button bindtap='delete' plain="true" data-sort="myadopt_cw" id='{{item.id}}' style='color:black;border:1px solid black;margin-right:50rpx;line-height:60rpx;width:200rpx;height:60rpx;margin-top:10rpx;border-radius:15px;font-size:30rpx;' type="primary">删除订单</button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view wx:if="{{myadopt_zr.length < 1}}">
+            <view class='nodata'>
+              <image class='nodata-img' src='/image/sorry.png'></image>
+              <view>很抱歉，没有找到你想要的内容</view>
+            </view>
+          </view>
+          <view wx:for="{{myadopt_zr}}" wx:key="*this">
+            <view class='border'></view>
+            <view class='card'>
+              <view class='card_header'>
+                <view class='card_header_left'>
+                  <image class='card_header_avatar' src='https://mcj.qiujikeji.com/public/uploads/avatarUrl/{{item.avatarUrl}}.jpg'> </image>
+                  <view class='card_header_left_item'>
+                    <text style=' font-size: 24rpx;'>{{item.nickname}}</text>
+                    <text style=' font-size: 22rpx;color:#515151'>{{item.create_time}}</text>
+                  </view>
+                </view>
+                <view wx:if="{{item.status=='寻觅中'}}">
+                  <view class='card_header_status'>{{item.status}}</view>
+                </view>
+                <view wx:else>
+                  <view style='color:black' class='card_header_status'>{{item.status}}</view>
+                </view>
+              </view>
+              <navigator url="/pages/adopt/detail/detail?id={{item.id}}">
+                <view class='card_content'>
+                  <view class='card_content_right'>
+                    <image style='width:150rpx;height:150rpx' src='{{item.image}}'></image>
+                  </view>
+                  <view class='card_content_right'>
+                  <view>
+                      <image style='width:28rpx;height:28rpx' src='/image/time.png'></image>宠物名字：{{item.name}}</view>
+                    <view>
+                      <image style='width:28rpx;height:28rpx' src='/image/name.png'></image>宠物类型：{{item.pet_sort}}</view>
+                    <view>
+                      <image style='width:28rpx;height:28rpx' src='/image/place.png'></image>所在城市：{{item.region}}</view>
+                  </view>
+                  <!-- <image class='card_content_img' src='http://www.qqtouxiang.com/d/file/tupian/mx/20170713/jijdgn0rekpce.jpg'>
+                                                </image> -->
+                </view>
+              </navigator>
+              <view style='display:flex;justify-content:space-between;' class='card_footer'>
+                <view class='fee'>
+                  <view class='fee_text'>领养费用：</view>
+                  <view class='fee_num'>{{item.fee}}</view>
+                  <image src='/image/bone.png'></image>
+                </view>
+                <view wx:if="{{item.status=='寻觅中'}}">
+                  <button bindtap='cancel' plain="true" data-sort="myadopt_zr" id='{{item.id}}' style='color:#fbc2eb;border:1px solid #fbc2eb;margin-right:50rpx;line-height:60rpx;width:200rpx;height:60rpx;margin-top:10rpx;border-radius:15px;font-size:30rpx;' type="primary">取消</button>
+                </view>
+                <view wx:elif="{{item.status=='待领取'}}"> 
+               
+                 </view>
+                <view wx:else>
+                  <button bindtap='delete' plain="true" data-sort="myadopt_zr" id='{{item.id}}' style='color:black;border:1px solid black;margin-right:50rpx;line-height:60rpx;width:200rpx;height:60rpx;margin-top:10rpx;border-radius:15px;font-size:30rpx;' type="primary">删除</button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

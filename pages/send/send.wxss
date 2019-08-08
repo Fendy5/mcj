@@ -1,0 +1,40 @@
+/* pages/send/send.wxss */
+page{
+   background-color: #f4f4f4;
+}
+.warp {
+background-position:top center;
+background-attachment:fixed;
+height: 100%
+}
+.weui-footer {
+position:inherit;
+bottom:5rpx;
+margin-left:100rpx;
+}
+
+.warp image {
+    width: 100%;
+    height: 100%;
+}
+.authorize-btn{
+  background-color: #C26F19;
+  width:250px;
+  height:45px;
+  top:210px;
+}
+
+.weui-cell__ft{
+  text-align:left;
+  color:black;
+  -webkit-box-flex:1;
+-webkit-flex:1;
+flex:2.7;
+}
+.weui-cell{
+  display:flex;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+  justify-content:center;
+}

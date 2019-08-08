@@ -1,0 +1,133 @@
+<view wx:if="{{status < 1}}">
+    <view class='remind-box' style='padding-top:150px;'>
+          <image class="remind-img" src="/image/loading.gif"></image>
+    </view>
+</view> 
+<view wx:else>
+
+<view class='card_header' style='background-color: #fff;height:100rpx;padding:15rpx 0;border-bottom:1px solid #C9C9C9;'>
+  <view class='card_header_left'>
+    <image class='card_header_avatar' src='https://mcj.qiujikeji.com/public/uploads/avatarUrl/{{detail.avatarUrl}}.jpg'> </image>
+    <view class='card_header_left_item'>
+      <text style=' font-size: 24rpx;'>{{detail.nickname}}</text>
+      <text style=' font-size: 22rpx;color:#515151'>{{detail.create_time}}</text>
+    </view>
+  </view>
+  <view class='card_header_status'>{{detail.send_sort}}</view>
+</view>
+<view class="weui-cells__title">宠物详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <image src="../../image/name.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">宠物类型</view>
+    <view class="weui-cell__ft">{{detail.pet_sort}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <image src="../../image/name1.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">宠物名字</view>
+    <view class="weui-cell__ft">{{detail.petname}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <image src="../../image/date.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">丢失日期</view>
+    <view class="weui-cell__ft">{{detail.send_date}}</view>
+  </view>
+
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <image src="../../image/time.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">丢失时间</view>
+    <view class="weui-cell__ft">{{detail.send_time}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <image src="../../image/place.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">丢失城市</view>
+    <view class="weui-cell__ft">{{detail.region}}</view>
+  </view>
+
+</view>
+<view class='border'></view>
+<view class="weui-panel weui-panel_access">
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_text">
+      <view class="weui-media-box__title weui-media-box__title_in-text">具体位置</view>
+      <view class="weui-media-box__desc">{{detail.place}}</view>
+    </view>
+  </view>
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_text">
+      <view class="weui-media-box__title weui-media-box__title_in-text">物品描述</view>
+      <view class="weui-media-box__desc">{{detail.detail}}</view>
+    </view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">宠物图片</view>
+              <view class="weui-uploader__info">{{detail.image.length}}张</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <block wx:for="{{detail.image}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{button}}">
+ <button open-type='getUserInfo'  bindgetuserinfo="userInfoHandler"   data-sort="mymcj_cw" id='{{item.id}}'  style='background-color:#fbc2eb;margin-right:50rpx;right:-25rpx;margin-top:10rpx;border-radius:15px;font-size:30rpx;'  type="primary">联系TA</button>
+<view class='border'></view>
+<view class='border'></view>
+</view>
+
+ <view wx:if="{{qrcode}}">
+ <view class="page__bd">
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">确认码</view>
+              <view class="weui-uploader__info" style='color:red'>注意保管！</view>
+            </view>
+            <view class='notice'>
+            对方扫了确认码之后，平台将自动把赏金打入对方账户
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{detail.qrcode_url}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewqrcode" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+ </view>
+<view class='border'></view>
+<view class='border'></view>
+</view>

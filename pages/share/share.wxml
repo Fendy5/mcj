@@ -1,0 +1,4 @@
+ <view class="warp" style="background-image: url('https://mcj.qiujikeji.com/public/static/img/share.jpg')">
+ <button  class="authorize-btn" type="primary" >分享到朋友圈</button>
+  <button bindtap='back'  plain="true" class="authorize-btn" type="primary" >返回去看看</button>
+</view> 

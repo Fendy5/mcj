@@ -1,0 +1,110 @@
+<view class="container">
+  <view class='head'>
+    <view class='userinfo'>
+      <open-data class='userinfo_avatar' type="userAvatarUrl" lang="zh_CN"></open-data>
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+    </view>
+  </view>
+
+  <button class="kf_button" open-type="contact" session-from="weapp">
+    <image class="kf_image" src="../../image/kefu.png"></image>
+  </button>
+
+  <view class='person'>
+    <view class='person_header'>
+      <view class='bone'>
+        <view class='bone_top_text'>骨头数量</view>
+        <view class='bone_top'>
+          <view class='bone_text'>{{fee}}</view>
+          <image src='/image/bone.png'></image>
+        </view>
+      </view>
+      <view class='my'>
+      <navigator url='mymcj/mymcj'>
+          <view class='my_record'>
+          <view class='my_record_text'>我的觅宠:</view>
+          <view class='my_record_num'>{{mc_num}}</view>
+        </view>
+      </navigator>
+    
+    <navigator url='myadopt/myadopt'>
+     <view class='my_record'>
+          <view class='my_record_text'>我的领养:</view>
+          <view class='my_record_num'>{{adopt}}</view>
+        </view>
+    </navigator>
+       
+      </view>
+    </view>
+    <!-- 
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="mymcj/mymcj" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="../../image/mysend.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">我的觅宠记</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">我发布的记录</view>
+    </navigator>
+    <navigator url="mymcj/mymcj" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd">
+        <image src="../../image/myrec.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">我的认养记</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">我认养的宠物</view>
+    </navigator>
+  </view> -->
+
+    <view class='border'></view>
+    <view class='border'></view>
+    <view class='border'></view>
+    <view class="weui-cells_after-title">
+      <navigator url="reward/reward" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../image/money1.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">打赏记录</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="balance/balance" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../image/tx.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">余额提现</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <!-- </view>
+
+             <view class='border'></view>
+   <view class="weui-cells weui-cells_after-title"> -->
+      <!-- <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="../../image/switch.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">更改绑定</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator> -->
+                  <view bindtap='sacn' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../image/scan.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">赏金确认</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">扫一扫领取赏金</view>
+      </view>
+      <navigator url="question/question" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../image/question.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">常见问题</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="feedback/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="./../../image/feedback.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">意见反馈</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">向我们提供宝贵的意见</view>
+      </navigator>
+    </view>
+
+  </view>
+</view>
